@@ -13,33 +13,28 @@
 \def\OP#1{{\color{purple}OP: \it #1}}
 \def\OPdel#1{\bgroup\markoverwith{\textcolor{purple}{\rule[0.5ex]{2pt}{1pt}}}\ULon{#1}}
 
-% %%% mtheme customisations
-% \usetheme[progressbar=frametitle,block=fill]{m}
-% \setmonofont[Scale=0.92]{Fira Mono}
-% \AtBeginSubsection{
-% \metroset{color/background=dark}
-% \frame[plain,c]{
-%   \begin{center}
-%   \begin{minipage}{25em}
-%     \usebeamercolor[fg]{section title}
-%     \usebeamerfont{section title}
-%     \insertsubsection\\[-1ex]
-%     \usebeamertemplate*{progress bar in section page}
-%   \end{minipage}
-%   \end{center}
-% }
-% \metroset{color/background=light}
-% }
-% %%%%% end mtheme
+
+%%% mtheme customisations
+% \usetheme[frametitleformat=regular,progressbar=frametitle,block=fill]{m}
+\usetheme[progressbar=frametitle]{m}
+\AtBeginSubsection{
+\metroset{color/background=dark}
+\frame[plain,c]{
+  \begin{center}
+  \begin{minipage}{25em}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsubsection\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+  \end{minipage}
+  \end{center}
+}
+\metroset{color/background=light}
+}
+%%%%% end mtheme
 
 \setbeamertemplate{frametitle continuation}[from second]
 \setbeamertemplate{bibliography item}[book]
-
-% \usepackage{xeCJK}
-% %\setCJKsansfont[BoldFont=Kozuka Gothic Pro]{Kozuka Gothic Pro L}
-% \setCJKsansfont{IPAGothic}
-% % \newCJKfontfamily{\xiheifont}[BoldFont=STHeiti]{STXihei}
-% \newCJKfontfamily{\xiheifont}{WenQuanYi Micro Hei}
 
 \usetikzlibrary{arrows}
 \usetikzlibrary{chains}
@@ -85,23 +80,31 @@ emphstyle={\color{OliveGreen}\bfseries}
 }
 
 \usepackage[os=win]{menukeys}
+\usepackage{notoccite}
+\usepackage[numbers,sort&compress]{natbib}
 
 
-\title{A Dataset of Operator-client Dialogues Aligned with Database Queries for End-to-end Training}
+\title{{A Dataset of Operator-client Dialogues Aligned with Database Queries for End-to-end Training}}
 
 
 \author{Ondřej Plátek \& Filip Jurčíček \\ \footnotesize{\texttt{\{oplatek,jurcicek\}@ufal.mff.cuni.cz}}}
 \institute{
 Institute of Formal and Applied Linguistics\\
 Faculty of Mathematics and Physics\\
-Charles university in Prague
+Charles University in Prague
 }
 
 \begin{document}
 
 \maketitle
 
-\section{Example section}
+
+\begin{frame}{Table of contents}
+  \setbeamertemplate{section in toc}[sections numbered]
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Motivation}
 \begin{frame}
     \frametitle{Example slide}
     \begin{columns}
@@ -119,6 +122,11 @@ Charles university in Prague
     \end{columns}
 \end{frame}
 
+\section{Collection process}
+
+\section{Dataset}
+
+\section{Future work}
 
 % \plain{The End\\Thank you!}
 
@@ -126,7 +134,7 @@ Charles university in Prague
 
 \begin{frame}[allowframebreaks]
         \frametitle{References}
-        \bibliographystyle{plain}
+        \bibliographystyle{unsrtnat}
         \bibliography{literature.bib}
 \end{frame}
 
