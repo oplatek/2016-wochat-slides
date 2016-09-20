@@ -154,6 +154,7 @@ Charles University in Prague
         \end{column}
         \begin{column}{0.60\textwidth}
             \vfill
+            % Todo insert arrow
             \includegraphics[width=0.90\textwidth]{db_columns.png}
         \end{column}
     \end{columns}
@@ -162,20 +163,85 @@ Charles University in Prague
 \begin{frame}\frametitle{Complementary to DSTC2\cite{henderson2014dstc2}}
     \begin{enumerate}
         \item Focused on semantics (valid answers) not NLG
-        \item Simplified --- single goal, guided via interface  
-        \item Different collection scheme 
-        \item <4> Understating the dataset
+        \item Simplified --- single (current) goal, guided via interface  
+        \item Different collection scheme --- automatic validation
     \end{enumerate}
 \end{frame}
 
 
 \section{Collection process}
 
+\begin{frame}\frametitle{Offline collection scheme}
+    \begin{itemize}
+        \item Easy to crowdsource
+        \item Easy to check 
+        \item Time for annotations\cite{wen2016network}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Client interface}
+    \includegraphics[width=0.90\textwidth]{./gui-annotators-client.png}
+\end{frame}
+
+\begin{frame}\frametitle{System interface}
+    \includegraphics[width=0.90\textwidth]{./gui-annotators-system.png}
+\end{frame}
+
+\begin{frame}\frametitle{Collection process}
+    \begin{enumerate}
+        \item Each job add a single response to each dialogue 
+        \item User feedback
+        \item Manual control still needed
+        \item Goal presented incrementally
+    \end{enumerate}
+\end{frame}
+
 \section{Dataset sample}
+
+\begin{frame}\frametitle{First finished data}
+    \begin{enumerate}
+        \item Each job add a single response to each dialogue 
+        \item User feedback
+        \item Manual control still needed
+        \item Goal presented incrementally
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{First statistics}
+    \begin{enumerate}
+        \item 62 finished conversations
+        \item 3.8 turns (pair of user system replies) collected
+        \item User told to ask for 2.4 goals but only 1.9 answered 
+    \end{enumerate}
+\end{frame}
+
+% \begin{frame}\frametitle{Example}
+%     {\bf User's goal: {\it Chinese} restaurant in {\it a city center}} \\
+%     {\ Operator can search a table with restaurant information}
+%     \vfill
+%     \usr{I would like a Chinese restaurant} \\
+%     \api{select restaurant.name food="Chinese"} \\
+%     \sys{A golden house is a Chinese restaurant in the city center}
+% \end{frame}
 
 \section{Future work}
 
-% \plain{The End\\Thank you!}
+\begin{frame}\frametitle{In progress}
+    \begin{enumerate}
+        \item Apologies for not publishing the dataset!
+        \item Detecting end of dialogue automatically
+        \item Discourage one shot queries
+        \item Automatic validation
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Future work}
+    \begin{enumerate}
+        \item Evaluating usefulness of DB calls in for selecting response 
+        \item Pairing crowd-source workers in real-time
+        \item Compare real-time and offline annotation scheme
+    \end{enumerate}
+\end{frame}
 
 \appendix
 
