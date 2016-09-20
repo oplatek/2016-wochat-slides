@@ -12,7 +12,7 @@
 \def\pricerange#1{{\color{orange}pricerange:\it #1}}
 \def\sys#1{{\color{purple}System: \it #1}}
 \def\usr#1{{\color{brown}User: \it #1}}
-\def\api#1{{\color{blue}DB call: \it #1}}
+\def\api#1{{\color{blue}DB annotations: \it #1}}
 
 % OP - Ondrej Platek inline 
 \definecolor{purple}{RGB}{200,0,200}
@@ -104,32 +104,29 @@ Charles University in Prague
 
 \maketitle
 
+\begin{frame}\frametitle{Intended scenario}
+    \begin{itemize}
+        \item DSTC2~\cite{henderson2014dstc2} restaurant domain
+        \item User's goal: {\it Chinese} restaurant in {\it a city center}
+    \end{itemize}
+    \vfill
+    \sys{Hello, welcome to the Cambridge restaurant system! \dots } \\
+    \usr{I would like a Chinese restaurant} \\
+    \sys{A golden house is a Chinese restaurant in the city center} \\
+    \dots
+
+\end{frame}
+
 
 \begin{frame}{Table of contents}
   \setbeamertemplate{section in toc}[sections numbered]
   \tableofcontents[hideallsubsections]
 \end{frame}
 
+
 \section{Motivation}
 
-% \begin{frame}
-%     \frametitle{Why new dataset?}
-%     \begin{columns}
-%         \begin{column}{0.65\textwidth}
-%             \begin{itemize}
-%                 \item Recurrent neural network composed of sequentially ordered cells
-%                 \item Maintains (encodes) hidden state and emits observation after each turn
-%                 \item Improved with LSTM cells
-%                 \item Suitable for DST task - history is taken into account
-%             \end{itemize}
-%         \end{column}
-%         \begin{column}{0.35\textwidth}
-%             \includegraphics[width=0.90\textwidth]{encoder.pdf}
-%         \end{column}
-%     \end{columns}
-% \end{frame}
-
-\begin{frame}\frametitle{Example from dataset}
+\begin{frame}\frametitle{Collection scenario}
     {\bf User's goal: {\it Chinese} restaurant in {\it a city center}} \\
     {\ Operator can search a table with restaurant information}
     \vfill
@@ -160,7 +157,7 @@ Charles University in Prague
     \end{columns}
 \end{frame}
 
-\begin{frame}\frametitle{Complementary to DSTC2\cite{henderson2014dstc2}}
+\begin{frame}\frametitle{Similar to DSTC2\cite{henderson2014dstc2}}
     \begin{enumerate}
         \item Focused on semantics (valid answers) not NLG
         \item Simplified --- single (current) goal, guided via interface  
@@ -212,17 +209,27 @@ Charles University in Prague
         \item 62 finished conversations
         \item 3.8 turns (pair of user system replies) collected
         \item User told to ask for 2.4 goals but only 1.9 answered 
+        \item 4 correct reports not valid replies
+        \item Discarding under \% 35 replies
+        \item more than 20\%  
     \end{enumerate}
 \end{frame}
 
-% \begin{frame}\frametitle{Example}
-%     {\bf User's goal: {\it Chinese} restaurant in {\it a city center}} \\
-%     {\ Operator can search a table with restaurant information}
-%     \vfill
-%     \usr{I would like a Chinese restaurant} \\
-%     \api{select restaurant.name food="Chinese"} \\
-%     \sys{A golden house is a Chinese restaurant in the city center}
-% \end{frame}
+\begin{frame}\frametitle{Example}
+    \sys{Hello, welcome to the Cambridge restaurant system! \dots } \\
+    {\bf User's goal: {\it Chinese restaurant}} \\
+    \usr{I would like a Chinese restaurant} \\
+    \api{filter: Chinese} \\
+    \sys{There is a yu garden} \\
+    {\bf User's goal: {\it Chinese restaurant} \& {\it city center}} \\
+    \usr{I would like one in the city center} \\
+    \api{filter: Chinese, center} \\
+    \sys{A golden house is a Chinese restaurant in the city center} \\
+    {\bf User's goal: {\it Chinese restaurant} \& {\it city center}} \\
+    \usr{cool bye!} \\
+    \sys{Glad to help you}
+    \dots
+\end{frame}
 
 \section{Future work}
 
@@ -245,10 +252,18 @@ Charles University in Prague
 
 \appendix
 
+\begin{frame} \frametitle{Early experiment: Encoder-Decoder with DB sophisticated lies}
+{\bf input:} {\it anatolia serves turkish food in the moderate price range what is the phone number and address} \\
+{\bf decoded:} {\it The phone number of {\bf meghna} is {\bf 01223 727410} . EOS} \\
+{\bf target:} {\it The phone number of anatolia is {\bf 01223 362372} and it is on 30 Bridge Street City Centre . EOS}
+\end{frame}
+
 \begin{frame}[allowframebreaks]
         \frametitle{References}
         \bibliographystyle{unsrtnat}
         \bibliography{literature.bib}
 \end{frame}
+
+
 
 \end{document}
