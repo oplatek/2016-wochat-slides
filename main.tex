@@ -7,6 +7,12 @@
 \usepackage{comment}
 \usepackage{tikzsymbols}
 
+\def\area#1{{\color{darkgreen}area:\it #1}}
+\def\food#1#2{{Dial. state #1: \color{blue}food:\it #2}}
+\def\pricerange#1{{\color{orange}pricerange:\it #1}}
+\def\sys#1{{\color{purple}System: \it #1}}
+\def\usr#1{{\color{brown}User: \it #1}}
+\def\api#1{{\color{blue}DB call: \it #1}}
 
 % OP - Ondrej Platek inline 
 \definecolor{purple}{RGB}{200,0,200}
@@ -105,26 +111,67 @@ Charles University in Prague
 \end{frame}
 
 \section{Motivation}
-\begin{frame}
-    \frametitle{Example slide}
+
+% \begin{frame}
+%     \frametitle{Why new dataset?}
+%     \begin{columns}
+%         \begin{column}{0.65\textwidth}
+%             \begin{itemize}
+%                 \item Recurrent neural network composed of sequentially ordered cells
+%                 \item Maintains (encodes) hidden state and emits observation after each turn
+%                 \item Improved with LSTM cells
+%                 \item Suitable for DST task - history is taken into account
+%             \end{itemize}
+%         \end{column}
+%         \begin{column}{0.35\textwidth}
+%             \includegraphics[width=0.90\textwidth]{encoder.pdf}
+%         \end{column}
+%     \end{columns}
+% \end{frame}
+
+\begin{frame}\frametitle{Example from dataset}
+    {\bf User's goal: {\it Chinese} restaurant in {\it a city center}} \\
+    {\ Operator can search a table with restaurant information}
+    \vfill
+    \usr{I would like a Chinese restaurant} \\
+    \api{select restaurant.name food="Chinese"} \\
+    \sys{A golden house is a Chinese restaurant in the city center}
+\end{frame}
+
+\begin{frame}\frametitle{Why new dataset?}
+    \begin{enumerate}
+        \item <1> New annotation type
+        \item <2> More data
+        \item <3> Introduce different level of complexity
+        \item <4> Understating the dataset
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}\frametitle{Annotations for task oriented systems}
     \begin{columns}
-        \begin{column}{0.65\textwidth}
-            \begin{itemize}
-                \item Recurrent neural network composed of sequentially ordered cells
-                \item Maintains (encodes) hidden state and emits observation after each turn
-                \item Improved with LSTM cells
-                \item Suitable for DST task - history is taken into account
-            \end{itemize}
+        \begin{column}{0.40\textwidth}
+            \includegraphics[width=0.80\textwidth]{is_it_ontology.png}
         \end{column}
-        \begin{column}{0.35\textwidth}
-            \includegraphics[width=0.90\textwidth]{encoder.pdf}
+        \begin{column}{0.60\textwidth}
+            \vfill
+            \includegraphics[width=0.90\textwidth]{db_columns.png}
         \end{column}
     \end{columns}
 \end{frame}
 
+\begin{frame}\frametitle{Complementary to DSTC2\cite{henderson2014dstc2}}
+    \begin{enumerate}
+        \item Focused on semantics (valid answers) not NLG
+        \item Simplified --- single goal, guided via interface  
+        \item Different collection scheme 
+        \item <4> Understating the dataset
+    \end{enumerate}
+\end{frame}
+
+
 \section{Collection process}
 
-\section{Dataset}
+\section{Dataset sample}
 
 \section{Future work}
 
